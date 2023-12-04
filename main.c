@@ -39,7 +39,6 @@ void mostrarPorticos()
             printf("NOT CREATED");
         printf("\n");
     }
-    
     sleep(7);
     menu_admin();
 }
