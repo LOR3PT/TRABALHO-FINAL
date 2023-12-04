@@ -22,6 +22,7 @@ time_t rawtime;
 //
 void mostrarPorticos()
 {
+    int flag = 1;
     clrscr();
     printf("PÓRTICOS\n");
     for (int i = 0; i < 4; i++)
@@ -29,13 +30,16 @@ void mostrarPorticos()
         printf("Pórtico %d    ", i+1);
         for (int j = 0; j < 2; j++)
         {
-            if(porticos[i][j] == "" || porticos[i][j] == NULL)
-                printf("NOT CREATED");
+            if(strlen(porticos[i][j]) == 0)
+                flag = 0;
             else
                 printf("%s\t", porticos[i][j]);
         }
+        if(flag == 0)
+            printf("NOT CREATED");
         printf("\n");
     }
+    
     sleep(7);
     menu_admin();
 }
