@@ -5,6 +5,8 @@
 #include <time.h>
 #define clrscr() printf("\e[1;1H\e[2J")
 
+// FUNCOES (tirar aviso amarelo)
+
 void menu_admin();
 void menu_funcionario();
 void menu_utilizador();
