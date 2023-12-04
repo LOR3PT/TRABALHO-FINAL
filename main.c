@@ -5,10 +5,14 @@
 #include <time.h>
 #define clrscr() printf("\e[1;1H\e[2J")
 
-//
-// LOGINS
+void menu_admin();
+void menu_funcionario();
+void menu_utilizador();
+void menu();
+
+// VARIAVEIS GLOBAIS
+
 static int logado = 0;
-char sessao[200] = "";
 static int quantPort = 0;
 char porticos[4][2][200];
 time_t rawtime;
@@ -20,6 +24,7 @@ time_t rawtime;
 //  {"port5", "port5"}};
 
 //
+
 void mostrarPorticos()
 {
     int flag = 1;
@@ -84,7 +89,6 @@ void menu_admin()
 {
     int opcao;
     clrscr();
-    sessao[200] = "admin";
     printf("\n(1) Inserir os pórticos no sistema");
     printf("\n(2) Listar informação dos pórticos");
     printf("\n(3) Saber o preço de um determinado pórtico");
@@ -165,7 +169,6 @@ void menu_funcionario()
         {
             int opcao;
             clrscr();
-            sessao[200] = "func";
             printf("\n(1) Preço dos pórticos por classe");
             printf("\n(2) Inserir uma passagem de um veículo num pórtico");
             printf("\n(3) Listar as passagens no seu pórtico\n");
@@ -202,7 +205,6 @@ void menu_funcionario()
     {
         int opcao;
         clrscr();
-        sessao[200] = "func";
         printf("\n(1) Preço dos pórticos por classe");
         printf("\n(2) Inserir uma passagem de um veículo num pórtico");
         printf("\n(3) Listar as passagens no seu pórtico\n");
@@ -248,7 +250,6 @@ void menu_utilizador()
         {
             clrscr();
             logado = 1;
-            sessao[200] = "util";
             printf("\n(1) Preço dos pórticos por classe");
             printf("\n(2) Listar passagem de um veículo nos pórticos");
             printf("\n(3) Total gasto com o veículo \n");
@@ -284,7 +285,6 @@ void menu_utilizador()
     }
     else
     {
-        sessao[200] = "util";
         printf("\n(1) Preço dos pórticos por classe");
         printf("\n(2) Listar passagem de um veículo nos pórticos");
         printf("\n(3) Total gasto com o veículo \n");
