@@ -19,13 +19,10 @@ static int quantPort = 0;
 char porticos[4][2][200];
 time_t rawtime;
 
-// Exemplo Porticos
-// {{"port1", "port2"},
-//  {"port2", "port2"},
-//  {"port3", "port4"},
-//  {"port5", "port5"}};
 
-//
+
+
+
 
 void mostrarPorticos()
 {
