@@ -71,6 +71,7 @@ void criarPorticos()
             }
         }
         printf("Pórticos criados com sucesso!");
+        isCreatedPort = 1;
         sleep(2);
         menu_admin();
     }
@@ -153,8 +154,8 @@ void menu_funcionario()
 
     clrscr();
     int opcao;
-    char utport = "";
-    char pwport = "";
+    char utport[200];
+    char pwport[200];
     if (logado == 0)
     {
         if (isCreatedPort == 0)
@@ -174,25 +175,25 @@ void menu_funcionario()
             switch (opcao)
             {
             case 1:
-                utport = porticos[0,0];
-                pwport = porticos[1,0];
+                strcpy(utport,porticos[0,0]);
+                strcpy(pwport,porticos[1,0]);
                 break;
             case 2:
-                utport = porticos[1,0];
-                pwport = porticos[1,1];
+                strcpy(utport,porticos[1,0]);
+                strcpy(pwport,porticos[1,1]);
                 break;
             case 3:
-                utport = porticos[2,0];
-                pwport = porticos[1,2];
+                strcpy(utport,porticos[2,0]);
+                strcpy(pwport,porticos[1,2]);
                 break;
             case 4:
-                utport = porticos[3,0];
-                pwport = porticos[1,3];
+                strcpy(utport,porticos[3,0]);
+                strcpy(pwport,porticos[1,3]);
                 break;
     
             default:
                 printf("Opcao inválida!");
-                sleep(2);
+                sleep(2);   
                 menu_funcionario();
                 break;
             }
@@ -203,6 +204,7 @@ void menu_funcionario()
             scanf("%s", &idfuncionario);
             printf("\nIntroduza a password: ");
             scanf("%s", &password);
+           
             if (strcmp(idfuncionario, utport) == 0 && strcmp(password, pwport) == 0)
             {
                 int opcao;
