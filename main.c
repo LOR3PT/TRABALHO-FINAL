@@ -16,30 +16,26 @@ void menu();
 
 static int logado = 0;
 static int quantPort = 0;
+static int isCreatedPort = 0;
 char porticos[4][2][200];
 time_t rawtime;
 
-
-
-
-
-
 void mostrarPorticos()
 {
-    int flag = 1;
     clrscr();
     printf("PÓRTICOS\n");
     for (int i = 0; i < 4; i++)
     {
-        printf("Pórtico %d    ", i+1);
+        printf("Pórtico %d    ", i + 1);
         for (int j = 0; j < 2; j++)
         {
-            if(strlen(porticos[i][j]) == 0)
-                flag = 0;
-            else
+            if (strlen(porticos[i][j]) > 0)
+            {
                 printf("%s\t", porticos[i][j]);
+                isCreatedPort = 1;
+            }
         }
-        if(flag == 0)
+        if (isCreatedPort == 0)
             printf("NOT CREATED");
         printf("\n");
     }
@@ -81,6 +77,8 @@ void criarPorticos()
     else
     {
         printf("Máximo de pórticos já criados!");
+        sleep(2);
+        menu_admin();
     }
 }
 
@@ -155,49 +153,91 @@ void menu_funcionario()
 
     clrscr();
     int opcao;
+    char utport[200];
+    char pwport[200];
     if (logado == 0)
     {
-        char idfuncionario[200];
-        char password[200];
-
-        printf("Introduza o username do funcionario do portico: ");
-        scanf("%s", &idfuncionario);
-        printf("\nIntroduza a password: ");
-        scanf("%s", &password);
-        if (strcmp(idfuncionario, "funcionario") == 0 && strcmp(password, "funcionario99") == 0)
+        if (isCreatedPort == 0)
         {
-            int opcao;
-            clrscr();
-            printf("\n(1) Preço dos pórticos por classe");
-            printf("\n(2) Inserir uma passagem de um veículo num pórtico");
-            printf("\n(3) Listar as passagens no seu pórtico\n");
-            printf("\n\n(0) LOGOUT\n");
-            scanf("%d", &opcao);
-
-            switch (opcao)
-            {
-            case 0:
-                menu();
-                break;
-            case 1:
-                printf("1");
-                break;
-            case 2:
-                printf("2");
-                break;
-            case 3:
-                printf("Passou 3 vezes");
-                break;
-            default:
-                printf("Opção inválida");
-                break;
-            }
+            printf("Crie os pórticos primeiro!");
+            sleep(2);
+            menu();
         }
         else
         {
-            printf("\nUtilizador ou senhas incorretas!\n");
-            sleep(2);
-            menu_funcionario();
+            printf("1 - Pórtico 1");
+            printf("\n2 - Pórtico 2");
+            printf("\n3 - Pórtico 3");
+            printf("\n4 - Pórtico 4");
+            printf("\nEscolha o Pórtico: ");
+            scanf("%d", &opcao);
+            switch (opcao)
+            {
+            case 1:
+                utport[200] = porticos[0,0];
+                pwport[200] = porticos[1,0];
+                break;
+            case 2:
+                utport[200] = porticos[1,0];
+                pwport[200] = porticos[1,1];
+                break;
+            case 3:
+                utport[200] = porticos[2,0];
+                pwport[200] = porticos[1,2];
+                break;
+            case 4:
+                utport[200] = porticos[3,0];
+                pwport[200] = porticos[1,3];
+                break;
+    
+            default:
+                printf("Opcao inválida!");
+                sleep(2);
+                menu_funcionario();
+                break;
+            }
+            char idfuncionario[200];
+            char password[200];
+
+            printf("Introduza o username do funcionario do portico: ");
+            scanf("%s", &idfuncionario);
+            printf("\nIntroduza a password: ");
+            scanf("%s", &password);
+            if (strcmp(idfuncionario, utport[200]) == 0 && strcmp(password, pwport[200]) == 0)
+            {
+                int opcao;
+                clrscr();
+                printf("\n(1) Preço dos pórticos por classe");
+                printf("\n(2) Inserir uma passagem de um veículo num pórtico");
+                printf("\n(3) Listar as passagens no seu pórtico\n");
+                printf("\n\n(0) LOGOUT\n");
+                scanf("%d", &opcao);
+
+                switch (opcao)
+                {
+                case 0:
+                    menu();
+                    break;
+                case 1:
+                    printf("1");
+                    break;
+                case 2:
+                    printf("2");
+                    break;
+                case 3:
+                    printf("Passou 3 vezes");
+                    break;
+                default:
+                    printf("Opção inválida");
+                    break;
+                }
+            }
+            else
+            {
+                printf("\nUtilizador ou senhas incorretas!\n");
+                sleep(2);
+                menu_funcionario();
+            }
         }
     }
     else
@@ -257,22 +297,22 @@ void menu_utilizador()
 
             switch (opcao)
             {
-                case 1:
-                    printf("1");
-                    break;
-                case 2:
-                    printf("2");
-                    break;
-                case 3:
-                    printf("3");
-                    break;
-                case 4:
-                    logado = 0;
-                    menu();
-                    break;
-                default:
-                    printf("Opção inválida");
-                    break;
+            case 1:
+                printf("1");
+                break;
+            case 2:
+                printf("2");
+                break;
+            case 3:
+                printf("3");
+                break;
+            case 4:
+                logado = 0;
+                menu();
+                break;
+            default:
+                printf("Opção inválida");
+                break;
             }
         }
         else
@@ -290,7 +330,6 @@ void menu_utilizador()
         printf("\n\n(4) LOGOUT\n");
         scanf("%d\n", &opcao);
         time(&rawtime);
-
 
         switch (opcao)
         {
