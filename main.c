@@ -153,8 +153,8 @@ void menu_funcionario()
 
     clrscr();
     int opcao;
-    char utport[200];
-    char pwport[200];
+    char utport = "";
+    char pwport = "";
     if (logado == 0)
     {
         if (isCreatedPort == 0)
@@ -174,20 +174,20 @@ void menu_funcionario()
             switch (opcao)
             {
             case 1:
-                utport[200] = porticos[0,0];
-                pwport[200] = porticos[1,0];
+                utport = porticos[0,0];
+                pwport = porticos[1,0];
                 break;
             case 2:
-                utport[200] = porticos[1,0];
-                pwport[200] = porticos[1,1];
+                utport = porticos[1,0];
+                pwport = porticos[1,1];
                 break;
             case 3:
-                utport[200] = porticos[2,0];
-                pwport[200] = porticos[1,2];
+                utport = porticos[2,0];
+                pwport = porticos[1,2];
                 break;
             case 4:
-                utport[200] = porticos[3,0];
-                pwport[200] = porticos[1,3];
+                utport = porticos[3,0];
+                pwport = porticos[1,3];
                 break;
     
             default:
@@ -203,7 +203,7 @@ void menu_funcionario()
             scanf("%s", &idfuncionario);
             printf("\nIntroduza a password: ");
             scanf("%s", &password);
-            if (strcmp(idfuncionario, utport[200]) == 0 && strcmp(password, pwport[200]) == 0)
+            if (strcmp(idfuncionario, utport) == 0 && strcmp(password, pwport) == 0)
             {
                 int opcao;
                 clrscr();
