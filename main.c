@@ -17,6 +17,7 @@ void menu();
 static int logado = 0;
 static int quantPort = 0;
 static int isCreatedPort = 0;
+static int portEscolhido = 0;
 char porticos[4][2][200];
 time_t rawtime;
 
@@ -98,8 +99,9 @@ void menu_admin()
     printf("\n(9) Saber total por pórtico e por dia");
     printf("\n(10) Saber o total de veículos que passaram em cada um dos pórticos");
     printf("\n(11) Saber qual o pórtico com mais afluência");
-    printf("\n(12) Saber média de passagens para cada um dos pórticos\n");
-    printf("\n\n(0) LOGOUT\n");
+    printf("\n(12) Saber média de passagens para cada um dos pórticos");
+    printf("\n(0) LOGOUT");
+    printf("\nEscolha a opção: ");
     scanf("%d", &opcao);
 
     switch (opcao)
@@ -177,18 +179,22 @@ void menu_funcionario()
             case 1:
                 strcpy(utport,porticos[0,0]);
                 strcpy(pwport,porticos[1,0]);
+                portEscolhido = 1;
                 break;
             case 2:
                 strcpy(utport,porticos[1,0]);
                 strcpy(pwport,porticos[1,1]);
+                portEscolhido = 2;
                 break;
             case 3:
                 strcpy(utport,porticos[2,0]);
                 strcpy(pwport,porticos[1,2]);
+                portEscolhido = 3;
                 break;
             case 4:
                 strcpy(utport,porticos[3,0]);
                 strcpy(pwport,porticos[1,3]);
+                portEscolhido = 4;
                 break;
     
             default:
@@ -209,7 +215,8 @@ void menu_funcionario()
             {
                 int opcao;
                 clrscr();
-                printf("\n(1) Preço dos pórticos por classe");
+                printf("Posto de Trabalho: Pórtico %d",portEscolhido);
+                printf("\n(1) Consultar preços por classe");
                 printf("\n(2) Inserir uma passagem de um veículo num pórtico");
                 printf("\n(3) Listar as passagens no seu pórtico\n");
                 printf("\n\n(0) LOGOUT\n");
