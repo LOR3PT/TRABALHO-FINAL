@@ -60,7 +60,7 @@ void mostrarPorticos()
     menu_admin();
 }
 
-void mostrarPrecario()
+void mostrarPrecario(char* path)
 {
     clrscr();
     printf("PREÇÁRIO\n\n");
@@ -85,8 +85,15 @@ void mostrarPrecario()
         }
         printf("\n");
     }
-    sleep(7);
-    return;
+    sleep(2);
+    if(strcmp(path, "utl") == 0)
+        menu_utilizador();
+    else
+        if(strcmp(path, "func") == 0)
+            menu_funcionario();
+        else
+            if(strcmp(path, "adm") == 0)
+                menu_admin();
 }
 
 void criarPorticos()
@@ -407,7 +414,7 @@ void menu_admin()
                 mostrarPorticos();
                 break;
             case 3:
-                mostrarPrecario();
+                mostrarPrecario("adm");
                 break;
             case 4:
                 alterarPrecario();
@@ -479,7 +486,7 @@ void menu_admin()
             mostrarPorticos();
             break;
         case 3:
-            mostrarPrecario();
+            mostrarPrecario("adm");
             break;
         case 4:
             printf("4");
@@ -593,7 +600,7 @@ void menu_funcionario()
                     menu();
                     break;
                 case 1:
-                    mostrarPrecario();
+                    mostrarPrecario("func");
                     break;
                 case 2:
                     criarPassagem();
@@ -632,7 +639,7 @@ void menu_funcionario()
             menu();
             break;
         case 1:
-            mostrarPrecario();
+            mostrarPrecario("func");
             break;
         case 2:
             criarPassagem();
@@ -660,7 +667,7 @@ void menu_utilizador()
     switch (opcao)
     {
         case 1:
-            mostrarPrecario();
+            mostrarPrecario("utl");
             break;
         case 2:
             listarPassagensPorticoMatricula();
