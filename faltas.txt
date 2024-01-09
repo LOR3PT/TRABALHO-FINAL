@@ -1,0 +1,4 @@
+Verificar se os porticos estão criados
+verificar voltar nos menus se estao a ir para os sitios certos
+verificar o logado=0 se está na posição certa
+verificar os dados metidos numa criaçao de portagem (se é matricula etc etc).
