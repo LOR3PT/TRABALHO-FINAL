@@ -492,6 +492,58 @@ void listarTotalPorticosMatr(){
     menu_admin();
 }
 
+void listarTotalPorticosClasses(){
+    int opcao;
+    int classe;
+    int destinofinal;
+    int soma = 0;
+    int quantPassagensPorticoAdmClasse = 0;
+    clrscr();
+    printf("CLASSE DO VEÍCULO\n\n");
+    printf("1 - CLASSE 1 (Ligeiro de Passageiros [até 5 lugares]) *");
+    printf("\n2 - CLASSE 2 (Pesado de Passageiros  [+ de 5 lugares]) *");
+    printf("\n3 - CLASSE 3 (Ligeiro de Mercadorias [até 3 eixos]) *");
+    printf("\n4 - CLASSE 4 (Pesado de Mercadorias  [+ de 3 eixos]) *");
+    printf("\n*com ou sem reboque");
+    printf("\n\nEscolha a opção: ");
+    scanf("%d", &opcao);
+    switch (opcao)
+    {
+        case 1:
+            classe = 0;
+            break;
+        case 2:
+            classe = 1;
+            break;
+        case 3:
+            classe = 2;
+            break;
+        case 4:
+            classe = 3;
+            break;
+        default:
+            printf("Opção inválida!");
+            sleep(1);
+            menu_admin();
+            break;
+    }
+    clrscr();
+    for(int a = 0; a < 4; a++){
+        printf("Pórtico %d - Total Gasto pela Classe %s\n", (a+1), classe);
+        for (int i = 0; i < linhas; i++) {
+            if(strcmp(matriz[i][4], (a+1)) == 0 && strcmp(matriz[i][1], classe) == 0){
+                quantPassagensPorticoAdmClasse++;
+                classe = atoi(&matriz[i][1]);
+                destinofinal = atoi(&matriz[i][2]);
+                soma = soma + precario[destinofinal][classe];
+            }
+        }
+        printf("Foram registadas %d passagens no pórtico %d pela classe %s somando um total de %.2f€\n\n", quantPassagensPorticoAdmClasse, (a+1), classe, soma);
+    }
+    sleep(3);
+    menu_admin();
+}
+
 void menu_admin(){
     int opcao;
     clrscr();
@@ -555,7 +607,7 @@ void menu_admin(){
                 listarTotalPorticosMatr();
                 break;
             case 8:
-                printf("8");
+                listarTotalPorticosClasses();
                 break;
             case 9:
                 printf("9");
@@ -630,7 +682,7 @@ void menu_admin(){
             listarTotalPorticosMatr();
             break;
         case 8:
-            printf("8");
+            listarTotalPorticosClasses();
             break;
         case 9:
             printf("9");
