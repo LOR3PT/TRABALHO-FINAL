@@ -479,12 +479,12 @@ void listarTotalPorticosMatr(){
     for(int a = 0; a < 4; a++){
         printf("Pórtico %d - Total Gasto pela Matrícula %s\n", (a+1), matricula);
         for (int i = 0; i < linhas; i++) {
-            if(strcmp(matriz[i][4], (a+1)) == 0 && strcmp(matriz[i][0], matricula) == 0 && strcmp((strptime( matriz[i][3], "%m/%d/%Y", dataformatada1)), (strptime( data, "%m/%d/%Y", dataformatada2)) == 0)){
+            /*if(strcmp(matriz[i][4], (a+1)) == 0 && strcmp(matriz[i][0], matricula) == 0 && strcmp((strptime( matriz[i][3], "%m/%d/%Y", dataformatada1)), (strptime( data, "%m/%d/%Y", dataformatada2)) == 0)){
                 quantPassagensPorticoAdm++;
                 classe = atoi(&matriz[i][1]);
                 destinofinal = atoi(&matriz[i][2]);
                 soma = soma + precario[destinofinal][classe];
-            }
+            }*/
         }
         printf("Foram registadas %d passagens no pórtico %d pela matrícula %s no dia %s somando um total de %.2f€\n\n", quantPassagensPorticoAdm, (a+1), matricula, data, soma);
     }
