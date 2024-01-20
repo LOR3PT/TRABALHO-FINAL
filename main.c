@@ -24,6 +24,8 @@ static int quantPassagensPorticoMatr = 0;
 static int quantPassagensPorticoAdm = 0;
 static int quantPassagensPorticoAdmMatreData = 0;
 static int quantPassagensPorticoData = 0;
+static int quantVeiculos = 0;
+static int quantPassagens = 0;
 
 char porticos[4][2][200];
 
@@ -670,6 +672,79 @@ void listarTotalPorticosClasses()
     menu_admin();
 }
 
+void listarTotalVeiculos(){
+    clrscr();
+    int flag = 0;
+    char charPortico[200];
+    if (linhas == 0)
+    {
+        printf("Não existe nenhuma passagem nas Portagens A28!");
+    }
+    else
+    {
+        clrscr();
+        for (int a = 0; a < 4; a++)
+        {
+            printf("Pórtico %d - Total Veículos\n", (a + 1));
+            quantVeiculos = 0;
+            flag = 0;
+            for (int i = 0; i < linhas; i++)
+            {
+                snprintf(charPortico, sizeof(charPortico), "%d", (a + 1));
+                if(strcmp(matriz[i][4], charPortico) == 0)
+                {
+                    quantVeiculos++;
+                    flag = 1;
+                    printf("Passaram um total de %d veículo no pórtico %d.\n\n", quantVeiculos, (a + 1));
+                }
+                if(flag == 0)
+                    printf("Não foram registadas passagens!\n\n");
+            }
+        }
+    }
+    sleep(3);
+    menu_admin();
+}
+
+void porticoMaisAfluente(){
+    clrscr();
+    int porticos[4];
+    char charPortico[200];
+    int totalpass = 0;
+    int afluente = 0;
+    if (linhas == 0)
+    {
+        printf("Não existe nenhuma passagem nas Portagens A28!");
+    }
+    else
+    {
+        clrscr();
+        for (int a = 0; a < 4; a++)
+        {
+            quantPassagens = 0;
+            for (int i = 0; i < linhas; i++)
+            {
+                snprintf(charPortico, sizeof(charPortico), "%d", (a + 1));
+                if(strcmp(matriz[i][4], charPortico) == 0)
+                {
+                    quantPassagens++;
+                    
+                }
+            }
+            porticos[a] = quantPassagens;
+            for(int r; r < 4; r++){
+                if(porticos[r] > totalpass){
+                    totalpass = porticos[r];
+                    afluente = r;
+                }
+            }
+        }
+        printf("O Pórtico mais afluente é o pórtico %d com um total de %d passagens.",afluente,totalpass);
+    }
+    sleep(3);
+    menu_admin();
+}
+
 void menu_admin()
 {
     int opcao;
@@ -740,10 +815,10 @@ void menu_admin()
                 listarTotalPorticosData();
                 break;
             case 10:
-                printf("10");
+                listarTotalVeiculos();
                 break;
             case 11:
-                printf("11");
+                porticoMaisAfluente();
                 break;
             case 12:
                 printf("12");
@@ -815,10 +890,10 @@ void menu_admin()
             listarTotalPorticosData();
             break;
         case 10:
-            printf("10");
+            listarTotalVeiculos();
             break;
         case 11:
-            printf("11");
+            porticoMaisAfluente();
             break;
         case 12:
             printf("12");
@@ -851,7 +926,7 @@ void menu_funcionario()
             printf("1 - Pórtico 1");
             printf("\n2 - Pórtico 2");
             printf("\n3 - Pórtico 3");
-            printf("\n4 - Pórtico 4");
+            printf("\n4 - Pórtico 4\n");
             printf("\nEscolha o Pórtico: ");
             scanf("%d", &opcao);
             switch (opcao)
@@ -885,10 +960,10 @@ void menu_funcionario()
             }
             char idfuncionario[200];
             char password[200];
-
+            clrscr();
             printf("Introduza o utilizador: ");
             scanf("%s", &idfuncionario);
-            printf("\nIntroduza a password: ");
+            printf("Introduza a password: ");
             scanf("%s", &password);
 
             if (strcmp(idfuncionario, utport) == 0 && strcmp(password, pwport) == 0)
@@ -897,10 +972,11 @@ void menu_funcionario()
                 logado = 1;
                 clrscr();
                 printf("Posto de Trabalho: Pórtico %d", portEscolhido);
-                printf("\n(1) Consultar preços por classe");
-                printf("\n(2) Inserir uma passagem de um veículo num pórtico");
-                printf("\n(3) Listar as passagens no seu pórtico\n");
-                printf("\n\n(0) LOGOUT\n");
+                printf("\n\n0 - Logout");
+                printf("\n1 - Consultar preços por classe");
+                printf("\n2 - Inserir uma passagem de um veículo num pórtico");
+                printf("\n3 - Listar as passagens no seu pórtico\n");
+                printf("\nEscolha a opção: ");
                 scanf("%d", &opcao);
 
                 switch (opcao)
@@ -937,10 +1013,12 @@ void menu_funcionario()
     {
         int opcao;
         clrscr();
-        printf("\n(1) Preço dos pórticos por classe");
-        printf("\n(2) Inserir uma passagem de um veículo num pórtico");
-        printf("\n(3) Listar as passagens no seu pórtico\n");
-        printf("\n\n(0) LOGOUT\n");
+        printf("Posto de Trabalho: Pórtico %d", portEscolhido);
+        printf("\n\n0 - Logout");
+        printf("\n1 - Consultar preços por classe");
+        printf("\n2 - Inserir uma passagem de um veículo num pórtico");
+        printf("\n3 - Listar as passagens no seu pórtico\n");
+        printf("\nEscolha a opção: ");
         scanf("%d", &opcao);
 
         switch (opcao)
