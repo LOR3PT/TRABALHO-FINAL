@@ -62,7 +62,7 @@ void mostrarPorticos()
             printf("NOT CREATED");
         printf("\n");
     }
-    sleep(7);
+    sleep(3);
     menu_admin();
 }
 
@@ -403,8 +403,8 @@ void criarPassagem()
         matriz[linhas - 1][3] = buffer;
         matriz[linhas - 1][4] = str_portEscolhido;
         char charTeste1[200];
-        printf("Passagem:\n");
-        for (int i = 0; i < linhas; i++)
+        printf("Passagem criada com sucesso!\n");
+        /*for (int i = 0; i < linhas; i++)
         {
             for (int j = 0; j < colunas; j++)
             {
@@ -463,7 +463,7 @@ void criarPassagem()
                 }
             }
             printf("\n");
-        }
+        }*/
     }
     sleep(3);
     menu_funcionario();
@@ -484,56 +484,74 @@ void listarPassagensPortico()
             quantPassagensPortico++;
             for (int j = 0; j < colunas; j++)
             {
-                if(j == 1){
+                if (j == 1)
+                {
                     snprintf(charTeste1, sizeof(charTeste1), "%d", 0);
-                    if (strcmp(matriz[i][j], charTeste1) == 0){
+                    if (strcmp(matriz[i][j], charTeste1) == 0)
+                    {
                         printf("Classe 1\t");
                     }
-                    else{
+                    else
+                    {
                         snprintf(charTeste1, sizeof(charTeste1), "%d", 1);
-                        if (strcmp(matriz[i][j], charTeste1) == 0){
+                        if (strcmp(matriz[i][j], charTeste1) == 0)
+                        {
                             printf("Classe 2\t");
                         }
-                        else{
+                        else
+                        {
                             snprintf(charTeste1, sizeof(charTeste1), "%d", 2);
-                            if (strcmp(matriz[i][j], charTeste1) == 0){
+                            if (strcmp(matriz[i][j], charTeste1) == 0)
+                            {
                                 printf("Classe 3\t");
                             }
-                            else{
+                            else
+                            {
                                 snprintf(charTeste1, sizeof(charTeste1), "%d", 3);
-                                if (strcmp(matriz[i][j], charTeste1) == 0){
+                                if (strcmp(matriz[i][j], charTeste1) == 0)
+                                {
                                     printf("Classe 4\t");
                                 }
                             }
                         }
                     }
                 }
-                else{
-                    if(j == 2){
+                else
+                {
+                    if (j == 2)
+                    {
                         snprintf(charTeste1, sizeof(charTeste1), "%d", 0);
-                        if (strcmp(matriz[i][j], charTeste1) == 0){
+                        if (strcmp(matriz[i][j], charTeste1) == 0)
+                        {
                             printf("Angeiras\t");
                         }
-                        else{
+                        else
+                        {
                             snprintf(charTeste1, sizeof(charTeste1), "%d", 1);
-                            if (strcmp(matriz[i][j], charTeste1) == 0){
+                            if (strcmp(matriz[i][j], charTeste1) == 0)
+                            {
                                 printf("Póvoa\t");
                             }
-                            else{
+                            else
+                            {
                                 snprintf(charTeste1, sizeof(charTeste1), "%d", 2);
-                                if (strcmp(matriz[i][j], charTeste1) == 0){
+                                if (strcmp(matriz[i][j], charTeste1) == 0)
+                                {
                                     printf("Esposende\t");
                                 }
-                                else{
+                                else
+                                {
                                     snprintf(charTeste1, sizeof(charTeste1), "%d", 3);
-                                    if (strcmp(matriz[i][j], charTeste1) == 0){
+                                    if (strcmp(matriz[i][j], charTeste1) == 0)
+                                    {
                                         printf("Neiva\t");
                                     }
                                 }
                             }
                         }
                     }
-                    else{
+                    else
+                    {
                         printf("%s\t", matriz[i][j]);
                     }
                 }
@@ -586,65 +604,86 @@ void listarPassagensPorticoAdmin()
     clrscr();
     char str_portEscolhido[20];
     char charTeste1[200];
+    int flag = 0;
     snprintf(str_portEscolhido, sizeof(str_portEscolhido), "%d", nport);
     printf("Pórtico %s - PASSAGENS REGISTADAS :\n", str_portEscolhido);
+    quantPassagensPortico = 0;
     for (int i = 0; i < linhas; i++)
     {
         if (strcmp(matriz[i][4], str_portEscolhido) == 0)
         {
+            int flag = 1;
             quantPassagensPortico++;
             for (int j = 0; j < colunas; j++)
             {
-                if(j == 1){
+                if (j == 1)
+                {
                     snprintf(charTeste1, sizeof(charTeste1), "%d", 0);
-                    if (strcmp(matriz[i][j], charTeste1) == 0){
+                    if (strcmp(matriz[i][j], charTeste1) == 0)
+                    {
                         printf("Classe 1\t");
                     }
-                    else{
+                    else
+                    {
                         snprintf(charTeste1, sizeof(charTeste1), "%d", 1);
-                        if (strcmp(matriz[i][j], charTeste1) == 0){
+                        if (strcmp(matriz[i][j], charTeste1) == 0)
+                        {
                             printf("Classe 2\t");
                         }
-                        else{
+                        else
+                        {
                             snprintf(charTeste1, sizeof(charTeste1), "%d", 2);
-                            if (strcmp(matriz[i][j], charTeste1) == 0){
+                            if (strcmp(matriz[i][j], charTeste1) == 0)
+                            {
                                 printf("Classe 3\t");
                             }
-                            else{
+                            else
+                            {
                                 snprintf(charTeste1, sizeof(charTeste1), "%d", 3);
-                                if (strcmp(matriz[i][j], charTeste1) == 0){
+                                if (strcmp(matriz[i][j], charTeste1) == 0)
+                                {
                                     printf("Classe 4\t");
                                 }
                             }
                         }
                     }
                 }
-                else{
-                    if(j == 2){
+                else
+                {
+                    if (j == 2)
+                    {
                         snprintf(charTeste1, sizeof(charTeste1), "%d", 0);
-                        if (strcmp(matriz[i][j], charTeste1) == 0){
+                        if (strcmp(matriz[i][j], charTeste1) == 0)
+                        {
                             printf("Angeiras\t");
                         }
-                        else{
+                        else
+                        {
                             snprintf(charTeste1, sizeof(charTeste1), "%d", 1);
-                            if (strcmp(matriz[i][j], charTeste1) == 0){
+                            if (strcmp(matriz[i][j], charTeste1) == 0)
+                            {
                                 printf("Póvoa\t");
                             }
-                            else{
+                            else
+                            {
                                 snprintf(charTeste1, sizeof(charTeste1), "%d", 2);
-                                if (strcmp(matriz[i][j], charTeste1) == 0){
+                                if (strcmp(matriz[i][j], charTeste1) == 0)
+                                {
                                     printf("Esposende\t");
                                 }
-                                else{
+                                else
+                                {
                                     snprintf(charTeste1, sizeof(charTeste1), "%d", 3);
-                                    if (strcmp(matriz[i][j], charTeste1) == 0){
+                                    if (strcmp(matriz[i][j], charTeste1) == 0)
+                                    {
                                         printf("Neiva\t");
                                     }
                                 }
                             }
                         }
                     }
-                    else{
+                    else
+                    {
                         printf("%s\t", matriz[i][j]);
                     }
                 }
@@ -652,7 +691,10 @@ void listarPassagensPorticoAdmin()
             printf("\n");
         }
     }
-    printf("Foram registadas %d passagens no pórtico %s.", quantPassagensPortico, str_portEscolhido);
+    if(flag == 1)
+        printf("Foram registadas %d passagens no pórtico %s.", quantPassagensPortico, str_portEscolhido);
+    else
+        printf("Não foram registadas passagens nesse mesmo pórtico!");
     sleep(3);
     menu_admin();
 }
@@ -666,7 +708,7 @@ void listarPassagensPorticoMatricula()
     printf("Indique a matrícula: ");
     scanf("%s", &matricula);
     clrscr();
-    printf("Matrícula %s - PASSAGENS REGISTADAS :", matricula);
+    printf("Matrícula %s - PASSAGENS REGISTADAS\n", matricula);
     for (int i = 0; i < linhas; i++)
     {
         if (strcmp(matriz[i][0], matricula) == 0)
@@ -674,56 +716,74 @@ void listarPassagensPorticoMatricula()
             quantPassagensPorticoMatr++;
             for (int j = 0; j < colunas; j++)
             {
-                if(j == 1){
+                if (j == 1)
+                {
                     snprintf(charTeste1, sizeof(charTeste1), "%d", 0);
-                    if (strcmp(matriz[i][j], charTeste1) == 0){
+                    if (strcmp(matriz[i][j], charTeste1) == 0)
+                    {
                         printf("Classe 1\t");
                     }
-                    else{
+                    else
+                    {
                         snprintf(charTeste1, sizeof(charTeste1), "%d", 1);
-                        if (strcmp(matriz[i][j], charTeste1) == 0){
+                        if (strcmp(matriz[i][j], charTeste1) == 0)
+                        {
                             printf("Classe 2\t");
                         }
-                        else{
+                        else
+                        {
                             snprintf(charTeste1, sizeof(charTeste1), "%d", 2);
-                            if (strcmp(matriz[i][j], charTeste1) == 0){
+                            if (strcmp(matriz[i][j], charTeste1) == 0)
+                            {
                                 printf("Classe 3\t");
                             }
-                            else{
+                            else
+                            {
                                 snprintf(charTeste1, sizeof(charTeste1), "%d", 3);
-                                if (strcmp(matriz[i][j], charTeste1) == 0){
+                                if (strcmp(matriz[i][j], charTeste1) == 0)
+                                {
                                     printf("Classe 4\t");
                                 }
                             }
                         }
                     }
                 }
-                else{
-                    if(j == 2){
+                else
+                {
+                    if (j == 2)
+                    {
                         snprintf(charTeste1, sizeof(charTeste1), "%d", 0);
-                        if (strcmp(matriz[i][j], charTeste1) == 0){
+                        if (strcmp(matriz[i][j], charTeste1) == 0)
+                        {
                             printf("Angeiras\t");
                         }
-                        else{
+                        else
+                        {
                             snprintf(charTeste1, sizeof(charTeste1), "%d", 1);
-                            if (strcmp(matriz[i][j], charTeste1) == 0){
+                            if (strcmp(matriz[i][j], charTeste1) == 0)
+                            {
                                 printf("Póvoa\t");
                             }
-                            else{
+                            else
+                            {
                                 snprintf(charTeste1, sizeof(charTeste1), "%d", 2);
-                                if (strcmp(matriz[i][j], charTeste1) == 0){
+                                if (strcmp(matriz[i][j], charTeste1) == 0)
+                                {
                                     printf("Esposende\t");
                                 }
-                                else{
+                                else
+                                {
                                     snprintf(charTeste1, sizeof(charTeste1), "%d", 3);
-                                    if (strcmp(matriz[i][j], charTeste1) == 0){
+                                    if (strcmp(matriz[i][j], charTeste1) == 0)
+                                    {
                                         printf("Neiva\t");
                                     }
                                 }
                             }
                         }
                     }
-                    else{
+                    else
+                    {
                         printf("%s\t", matriz[i][j]);
                     }
                 }
@@ -746,15 +806,15 @@ void listarTotalMatricula()
     char matricula[200];
     printf("Indique a matrícula: ");
     scanf("%s", &matricula);
-
+    clrscr();
     printf("Matrícula %s - Total Gasto\n", matricula);
     for (int i = 0; i < linhas; i++)
     {
         if (strcmp(matriz[i][0], matricula) == 0)
         {
             quantPassagensPorticoMatr++;
-            classe = atoi(&matriz[i][1]);
-            destinofinal = atoi(&matriz[i][2]);
+            classe = atoi(matriz[i][1]);
+            destinofinal = atoi(matriz[i][2]);
             soma = soma + precario[destinofinal][classe];
         }
     }
@@ -768,19 +828,23 @@ void listarTotalPorticos()
     clrscr();
     quantPassagensPorticoAdm = 0;
     int classe;
+    char charPortico[200];
     int destinofinal;
     float soma = 0;
     clrscr();
     for (int a = 0; a < 4; a++)
     {
         printf("Pórtico %d - Total Gasto\n", (a + 1));
+        quantPassagensPorticoAdm = 0;
+        soma = 0;
         for (int i = 0; i < linhas; i++)
         {
-            if (strcmp(matriz[i][4], (a + 1)) == 0)
+            snprintf(charPortico, sizeof(charPortico), "%d", (a + 1));
+            if (strcmp(matriz[i][4], charPortico) == 0)
             {
                 quantPassagensPorticoAdm++;
-                classe = atoi(&matriz[i][1]);
-                destinofinal = atoi(&matriz[i][2]);
+                classe = atoi(matriz[i][1]);
+                destinofinal = atoi(matriz[i][2]);
                 soma = soma + precario[destinofinal][classe];
             }
         }
@@ -826,17 +890,19 @@ void listarTotalPorticosMatr()
                 if (strcmp(matriz[i][0], matricula) == 0 && strcmp(matriz[i][3], data) == 0 && strcmp(matriz[i][4], charValue) == 0)
                 {
                     quantPassagensPorticoAdmMatreData++;
-                    classe = atoi(&matriz[i][1]);
-                    destinofinal = atoi(&matriz[i][2]);
+                    classe = atoi(matriz[i][1]);
+                    destinofinal = atoi(matriz[i][2]);
                     soma = soma + precario[destinofinal][classe];
                     flag = 1;
-                    printf("Foram registadas %d passagens no pórtico %d pela matrícula %s no dia %s somando um total de %.2f€\n\n", quantPassagensPorticoAdmMatreData, (a + 1), matricula, data, soma);
                 }
-
-                if (flag == 0)
-                {
-                    printf("Não foram registadas passagens!\n\n");
-                }
+            }
+            if (flag == 0)
+            {
+                printf("Não foram registadas passagens!\n\n");
+            }
+            else
+            {
+                printf("Foram registadas %d passagens no pórtico %d pela matrícula %s no dia %s somando um total de %.2f€\n\n", quantPassagensPorticoAdmMatreData, (a + 1), matricula, data, soma);
             }
         }
     }
@@ -869,6 +935,7 @@ void listarTotalPorticosData()
             printf("Pórtico %d - Total Gasto no dia %s\n", (a + 1), data);
             quantPassagensPorticoData = 0;
             flag = 0;
+            soma = 0;
             for (int i = 0; i < linhas; i++)
             {
                 char charValue[200];
@@ -876,17 +943,19 @@ void listarTotalPorticosData()
                 if (strcmp(matriz[i][3], data) == 0 && strcmp(matriz[i][4], charValue) == 0)
                 {
                     quantPassagensPorticoData++;
-                    classe = atoi(&matriz[i][1]);
-                    destinofinal = atoi(&matriz[i][2]);
+                    classe = atoi(matriz[i][1]);
+                    destinofinal = atoi(matriz[i][2]);
                     soma = soma + precario[destinofinal][classe];
                     flag = 1;
-                    printf("Foram registadas %d passagens no pórtico %d no dia %s somando um total de %.2f€\n\n", quantPassagensPorticoData, (a + 1), data, soma);
                 }
-
-                if (flag == 0)
-                {
-                    printf("Não foram registadas passagens!\n\n");
-                }
+            }
+            if (flag == 0)
+            {
+                printf("Não foram registadas passagens!\n\n");
+            }
+            else
+            {
+                printf("Foram registadas %d passagens no pórtico %d no dia %s somando um total de %.2f€\n\n", quantPassagensPorticoData, (a + 1), data, soma);
             }
         }
     }
@@ -899,7 +968,7 @@ void listarTotalPorticosClasses()
     int opcao;
     int classe;
     int destinofinal;
-    int soma = 0;
+    float soma = 0;
     int quantPassagensPorticoAdmClasse = 0;
     clrscr();
     printf("CLASSE DO VEÍCULO\n\n");
@@ -960,17 +1029,20 @@ void listarTotalPorticosClasses()
                 if (strcmp(matriz[i][4], charPortico) == 0 && strcmp(matriz[i][1], charClasse) == 0)
                 {
                     quantPassagensPorticoAdmClasse++;
-                    classe = atoi(&matriz[i][1]);
-                    destinofinal = atoi(&matriz[i][2]);
+                    classe = atoi(matriz[i][1]);
+                    destinofinal = atoi(matriz[i][2]);
                     soma = soma + precario[destinofinal][classe];
-                    printf("Foram registadas %d passagens no pórtico %d pela classe %s somando um total de %.2f€\n\n", quantPassagensPorticoAdmClasse, (a + 1), charClasse, soma);
+
                     flag = 1;
                 }
-
-                if (flag == 0)
-                {
-                    printf("Não foram registadas passagens!\n\n");
-                }
+            }
+            if (flag == 0)
+            {
+                printf("Não foram registadas passagens!\n\n");
+            }
+            else
+            {
+                printf("Foram registadas %d passagens no pórtico %d pela classe %s somando um total de %.2f€\n\n", quantPassagensPorticoAdmClasse, (a + 1), charClasse, soma);
             }
         }
     }
@@ -1002,11 +1074,12 @@ void listarTotalVeiculos()
                 {
                     quantVeiculos++;
                     flag = 1;
-                    printf("Passaram um total de %d veículo no pórtico %d.\n\n", quantVeiculos, (a + 1));
                 }
-                if (flag == 0)
-                    printf("Não foram registadas passagens!\n\n");
             }
+            if (flag == 0)
+                printf("Não foram registadas passagens!\n\n");
+            else
+                printf("Passaram um total de %d veículo no pórtico %d.\n\n", quantVeiculos, (a + 1));
         }
     }
     sleep(3);
@@ -1028,6 +1101,7 @@ void porticoMaisAfluente()
     else
     {
         clrscr();
+        totalpass = 0;
         for (int a = 0; a < 4; a++)
         {
             for (int i = 0; i < linhas; i++)
@@ -1039,7 +1113,6 @@ void porticoMaisAfluente()
                 }
             }
         }
-        totalpass = 0;
         for (int r; r < 4; r++)
         {
             if (porticos[r] > totalpass)
@@ -1097,12 +1170,12 @@ void menu_admin()
             logado = 1;
             printf("0 - LOGOUT");
             printf("\n1 - Inserir/Editar os pórticos no sistema");
-            printf("\n2 - Listar informação dos pórticos");
-            printf("\n3 - Saber o preço de um determinado pórtico");
-            printf("\n4 - Alterar os preços de todos os pórticos");
+            printf("\n2 - Ver Pórticos");
+            printf("\n3 - Ver Preços");
+            printf("\n4 - Alterar Preços");
             printf("\n5 - Listar as passagens de um pórtico");
-            printf("\n6 - Contabilizar o total gasto em cada um dos pórticos");
-            printf("\n7 - Saber o total gasto em cada um dos pórticos por veiculo num dia;");
+            printf("\n6 - Contabilizar o total ganho em cada um dos pórticos");
+            printf("\n7 - Saber o total gasto em cada um dos pórticos por veiculo num dia");
             printf("\n8 - Saber total gasto em cada um dos pórticos por classes");
             printf("\n9 - Saber total por pórtico e por dia");
             printf("\n10 - Saber o total de veículos que passaram em cada um dos pórticos");
@@ -1179,12 +1252,12 @@ void menu_admin()
         clrscr();
         printf("0 - LOGOUT");
         printf("\n1 - Inserir/Editar os pórticos no sistema");
-        printf("\n2 - Listar informação dos pórticos");
-        printf("\n3 - Saber o preço de um determinado pórtico");
-        printf("\n4 - Alterar os preços de todos os pórticos");
+        printf("\n2 - Ver Pórticos");
+        printf("\n3 - Ver Preços");
+        printf("\n4 - Alterar Preços");
         printf("\n5 - Listar as passagens de um pórtico");
-        printf("\n6 - Contabilizar o total gasto em cada um dos pórticos");
-        printf("\n7 - Saber o total gasto em cada um dos pórticos por veiculo num dia;");
+        printf("\n6 - Contabilizar o total ganho em cada um dos pórticos");
+        printf("\n7 - Saber o total gasto em cada um dos pórticos por veiculo num dia");
         printf("\n8 - Saber total gasto em cada um dos pórticos por classes");
         printf("\n9 - Saber total por pórtico e por dia");
         printf("\n10 - Saber o total de veículos que passaram em cada um dos pórticos");
@@ -1283,7 +1356,7 @@ void menu_funcionario()
             }
             switch (opcao)
             {
-                case 0:
+            case 0:
                 menu();
             case 1:
                 strcpy(utport, porticos[0, 0]);
@@ -1482,7 +1555,7 @@ void menu()
     switch (opcao)
     {
     case 0:
-        break;
+        return;
     case 1:
         menu_admin();
         break;
